@@ -90,7 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   if(index>=0 && index< displayXO.length){
                       return GestureDetector(
                   onTap:(){
-                    if(!winnerFound)
+                   
+                    if(!winnerFound && displayXO[index]=='')
                     { _tapped(index);  }
                   },
                   child: Container(decoration: BoxDecoration(
@@ -128,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         Padding(
                           padding: const EdgeInsets.all(18.0),
-                          child: ElevatedButton(style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 32,vertical: 16)) ,onPressed: _newGame, child: Text('Restart')),
+                          child: ElevatedButton(style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 32,vertical: 16)) ,onPressed: _newGame, child: Text('New Game')),
                         ),
                         ],
                       )
@@ -268,6 +269,7 @@ setState(() {
       oScore=0;
       xScore=0;
     });
+    _clearBoard();
     winnerFound=false;
   }
   void _finalWinner(){
